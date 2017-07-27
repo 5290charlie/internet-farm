@@ -6,7 +6,7 @@ class App extends Component {
     super(props)
     this.state = {
       amount: 500,
-      width: '100px',
+      width: '10%',
       visibility: {}
     }
     this.getImage = this.getImage.bind(this);
