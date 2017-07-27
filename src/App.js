@@ -1,19 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      amount: 500,
+      width: '100px',
+      visibility: {}
+    }
+    this.getImage = this.getImage.bind(this);
+    this.changeOpacity = this.changeOpacity.bind(this);
+    this.buildTiles = this.buildTiles.bind(this);
+  }
+  
+  getImage() {
+    return("http://img.memey.com/1/3/funny-farm-fire.jpg")
+  }
 
+  changeOpacity(event) {
+    event.target.style.opacity = 0;
+  }
+
+  buildTiles() {
+    const tiles = [];
+
+    for (let i=0; i<this.state.amount; i++) {
+      tiles.push(<img src="grass.jpg" style={{ width: this.state.width }} onClick={e => this.changeOpacity(e)} />)
+    }
+
+    return tiles;
+  }
+  
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Internet-Farm!</h2>
-        </div>
-        <p className="App-intro">
-          To get started, click on grass to farm.
-        </p>
+        {this.buildTiles()}
       </div>
     );
   }
